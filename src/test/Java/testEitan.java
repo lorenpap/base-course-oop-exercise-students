@@ -1,11 +1,10 @@
-import AerialVehicles.FighterJets.F15;
-import AerialVehicles.UAVs.Haron.Eitan;
 import Entities.Coordinates;
 import Missions.AttackMission;
 import Missions.BdaMission;
 import Missions.IntelligenceMission;
 import Missions.MissionTypeException;
 import org.junit.Test;
+import AerialVehicles.Eitan;
 
 import static org.junit.Assert.*;
 
@@ -20,6 +19,7 @@ public class testEitan {
     public void testAttack(){
         String expectedMessage = "Sheleg: Eitan Attacking suspect house with: nimrodX1";
         String message = eitan.attack();
+        System.out.println(message);
         assertEquals(message, expectedMessage);
     }
 

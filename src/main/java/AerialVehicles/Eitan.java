@@ -23,7 +23,7 @@ public class Eitan extends AerialVehicle implements AerialIntelligenceVehicle, A
 
     @Override
     public String attack() {
-        return (this.pilotName + ": " + aircraftName + "Attacking " + this.mission.additionalInfo + " with:"
+        return (this.pilotName + ": " + aircraftName+ " Attacking " + this.mission.additionalInfo + " with: "
         + this.rocketType + "X" + this.rocketAmount);
     }
 
@@ -54,4 +54,13 @@ public class Eitan extends AerialVehicle implements AerialIntelligenceVehicle, A
             repair();
         }
     }
+
+    public void flyTo(){
+        System.out.println("Flying to: " + this.mission.coordinates);
+    }
+
+    public void land(){
+        System.out.println("Landing");
+    }
+
 }

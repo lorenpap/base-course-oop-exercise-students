@@ -4,5 +4,5 @@ import Entities.Coordinates;
 
 public abstract class Mission{
       public String additionalInfo;
-      Coordinates coordinates;
+      public Coordinates coordinates;
 }

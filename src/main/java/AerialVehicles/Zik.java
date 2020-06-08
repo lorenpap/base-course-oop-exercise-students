@@ -9,8 +9,9 @@ public class Zik extends AerialVehicle implements AerialIntelligenceVehicle, Aer
     private final String aircraftName = "Zik";
     private String sensorType;
     private String cameraType;
+    private final int permittedFlightHours = 100;
 
-    public Zik(String sensorType, String cameraType, String pilotName, Mission mission, int flightHours, boolean status){
+    public Zik(String cameraType, String sensorType, String pilotName, Mission mission, int flightHours, boolean status){
         this.sensorType = sensorType;
         this.cameraType = cameraType;
         this.pilotName = pilotName;
@@ -21,13 +22,13 @@ public class Zik extends AerialVehicle implements AerialIntelligenceVehicle, Aer
 
     @Override
     public String preformBda() {
-        return (this.pilotName + ": " + aircraftName + "taking pictures of " + this.mission.additionalInfo + " with:"
-                + this.cameraType);
+        return (this.pilotName + ": " + aircraftName + " taking pictures of " + this.mission.additionalInfo + " with: "
+                + this.cameraType+ " camera");
     }
 
     @Override
     public String collectIntelligence() {
-        return (this.pilotName + ": " + aircraftName + " Collecting Data in "+ this.mission.additionalInfo + " with sensor type:" + this.sensorType);    }
+        return (this.pilotName + ": " + aircraftName + " Collecting Data in "+ this.mission.additionalInfo + " with sensor type: " + this.sensorType);    }
 
     @Override
     public void setMission(Mission mission) {
@@ -41,4 +42,23 @@ public class Zik extends AerialVehicle implements AerialIntelligenceVehicle, Aer
     public void setHoursOfFlightSinceLastRepair(int hours){
         this.flightHours = hours;
     };
+
+    public void repair(){
+        this.status= true;
+        this.flightHours = 0;
+    }
+
+    public void check(){
+        if(this.flightHours > this.permittedFlightHours){
+            repair();
+        }
+    }
+
+    public void flyTo(){
+        System.out.println("Flying to: " + this.mission.coordinates);
+    }
+
+    public void land(){
+        System.out.println("Landing");
+    }
 }

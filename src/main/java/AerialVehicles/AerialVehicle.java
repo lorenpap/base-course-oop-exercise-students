@@ -12,16 +12,15 @@ public abstract class AerialVehicle implements AerialVehicleService {
     int flightHours;
     boolean status;
 
-    void flyTo(){
-        System.out.println("Flying to: 32.123123, 41.123123");
+    public void flyTo(){}
+
+    public void land() {}
+
+    public void check() {
     }
 
-    void land(){
-        System.out.println("Landing");
-    }
+    public void repair(){}
 
-    public void check(){
-    }
     public abstract void setMission(Mission mission);
 
     public abstract int getHoursOfFlightSinceLastRepair();

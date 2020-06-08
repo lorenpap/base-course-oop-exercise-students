@@ -10,8 +10,9 @@ public class Kochav extends AerialVehicle implements AerialIntelligenceVehicle, 
     private String sensorType;
     private String cameraType;
     private final String aircraftName = "Kochav";
+    private final int permittedFlightHours = 100;
 
-    public Kochav(int rocketAmount, String rocketType, String sensorType, String cameraType, String pilotName, Mission mission, int flightHours, boolean status ){
+    public Kochav(int rocketAmount, String rocketType, String cameraType, String sensorType, String pilotName, Mission mission, int flightHours, boolean status ){
         this.rocketAmount = rocketAmount;
         this.rocketType = rocketType;
         this.sensorType = sensorType;
@@ -24,7 +25,7 @@ public class Kochav extends AerialVehicle implements AerialIntelligenceVehicle, 
 
     @Override
     public String attack() {
-        return (this.pilotName + ": " + aircraftName + "Attacking " + this.mission.additionalInfo + " with:"
+        return (this.pilotName + ": " + aircraftName + " Attacking " + this.mission.additionalInfo + " with: "
                 + this.rocketType + "X" + this.rocketAmount);
     }
 
@@ -40,14 +41,33 @@ public class Kochav extends AerialVehicle implements AerialIntelligenceVehicle, 
     }
 
     public String collectIntelligence(){
-        return (this.pilotName + ": " + aircraftName + " Collecting Data in "+ this.mission.additionalInfo + " with sensor type:" + this.sensorType);
+        return (this.pilotName + ": " + aircraftName + " Collecting Data in "+ this.mission.additionalInfo + " with sensor type: " + this.sensorType);
     }
 
     public String preformBda(){
-        return (this.pilotName + ": " + aircraftName + "taking pictures of " + this.mission.additionalInfo + " with:"
-                + this.cameraType);
+        return (this.pilotName + ": " + aircraftName + " taking pictures of " + this.mission.additionalInfo + " with: "
+                + this.cameraType + " camera");
     }
     public void setHoursOfFlightSinceLastRepair(int hours){
         this.flightHours = hours;
+    }
+
+    public void repair(){
+        this.status= true;
+        this.flightHours = 0;
+    }
+
+    public void check(){
+        if(this.flightHours > this.permittedFlightHours){
+            repair();
+        }
+    }
+
+    public void flyTo(){
+        System.out.println("Flying to: " + this.mission.coordinates);
+    }
+
+    public void land(){
+        System.out.println("Landing");
     }
 }
